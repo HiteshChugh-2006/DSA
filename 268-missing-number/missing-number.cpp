@@ -1,16 +1,13 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        unordered_map<int,int> mp;
-        for(int i=0;i<nums.size();i++)
-        {
-            mp[nums[i]]++;
+        int ans = nums.size();
+
+        for (int i = 0; i < nums.size(); i++) {
+            ans ^= i;
+            ans ^= nums[i];
         }
-        for(int i=0;i<=nums.size();i++)
-        {
-            if(mp.find(i) ==mp.end())
-            return i;
-        }
-        return -1;
+
+        return ans;
     }
 };
